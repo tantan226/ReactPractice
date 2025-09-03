@@ -7,10 +7,11 @@ declare module "@remix-run/node" {
     v3_singleFetch: true;
   }
 }
+const isStorybook = process.argv[1]?.includes("storybook");
 
 export default defineConfig({
   plugins: [
-    remix({
+    !isStorybook && remix({
       ssr: false,
       future: {
         v3_fetcherPersist: true,
